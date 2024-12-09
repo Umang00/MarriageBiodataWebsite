@@ -1,4 +1,4 @@
-import { User, Users, GraduationCap, Briefcase, Heart, Coffee, ArrowRight } from 'lucide-react';
+import { User, Users, GraduationCap, Briefcase, Heart, Coffee } from 'lucide-react';
 import { InfoSection } from '../components/InfoSection';
 import { Timeline } from '../components/Timeline';
 import { Link } from 'react-router-dom';
@@ -12,6 +12,14 @@ import {
   lifestyleInfo 
 } from '../data/profile';
 
+// Helper function to format label
+const formatLabel = (key: string): string => {
+  return key
+    .split(/(?=[A-Z])/)
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+};
+
 export default function About() {
   return (
     <div className="max-w-4xl mx-auto py-24 px-4">
@@ -23,7 +31,7 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {Object.entries(personalInfo).map(([key, value]) => (
             <div key={key} className="flex flex-col">
-              <span className="text-gray-400 text-sm">{key.replace(/([A-Z])/g, ' $1').trim()}</span>
+              <span className="text-gray-400 text-sm">{formatLabel(key)}</span>
               <span className="text-white">{value}</span>
             </div>
           ))}
@@ -34,7 +42,7 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {Object.entries(familyInfo).map(([key, value]) => (
             <div key={key} className="flex flex-col">
-              <span className="text-gray-400 text-sm">{key.replace(/([A-Z])/g, ' $1').trim()}</span>
+              <span className="text-gray-400 text-sm">{formatLabel(key)}</span>
               <span className="text-white">{value}</span>
             </div>
           ))}
@@ -45,7 +53,7 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {Object.entries(educationInfo).map(([key, value]) => (
             <div key={key} className="flex flex-col">
-              <span className="text-gray-400 text-sm">{key.replace(/([A-Z])/g, ' $1').trim()}</span>
+              <span className="text-gray-400 text-sm">{formatLabel(key)}</span>
               <span className="text-white">{value}</span>
             </div>
           ))}
@@ -56,7 +64,7 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {Object.entries(professionalInfo).map(([key, value]) => (
             <div key={key} className="flex flex-col">
-              <span className="text-gray-400 text-sm">{key.replace(/([A-Z])/g, ' $1').trim()}</span>
+              <span className="text-gray-400 text-sm">{formatLabel(key)}</span>
               <span className="text-white">{value}</span>
             </div>
           ))}
@@ -67,7 +75,7 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {Object.entries(astrologicalInfo).map(([key, value]) => (
             <div key={key} className="flex flex-col">
-              <span className="text-gray-400 text-sm">{key.replace(/([A-Z])/g, ' $1').trim()}</span>
+              <span className="text-gray-400 text-sm">{formatLabel(key)}</span>
               <span className="text-white">{value}</span>
             </div>
           ))}
@@ -78,7 +86,7 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {Object.entries(lifestyleInfo).map(([key, value]) => (
             <div key={key} className="flex flex-col">
-              <span className="text-gray-400 text-sm">{key.replace(/([A-Z])/g, ' $1').trim()}</span>
+              <span className="text-gray-400 text-sm">{formatLabel(key)}</span>
               <span className="text-white">{Array.isArray(value) ? value.join(', ') : value}</span>
             </div>
           ))}
@@ -91,7 +99,6 @@ export default function About() {
         <Link to="/gallery">
           <Button>
             View My Photo Gallery
-            <ArrowRight className="inline ml-2" size={20} />
           </Button>
         </Link>
       </div>
