@@ -1,18 +1,21 @@
 import { useState, FormEvent } from 'react';
 import { Button } from './Button';
-import { Mail, Send } from 'lucide-react';
+import { Send } from 'lucide-react';
+import { sendMessage } from '../services/messaging';
 
 interface FormData {
   name: string;
   mobile: string;
   email: string;
   message: string;
+  contactPerson?: string;
 }
 
 interface FormErrors {
   name?: string;
   mobile?: string;
   message?: string;
+  contactPerson?: string;
 }
 
 export function ContactForm() {
@@ -20,10 +23,12 @@ export function ContactForm() {
     name: '',
     mobile: '',
     email: '',
-    message: ''
+    message: '',
+    contactPerson: ''
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -31,11 +36,19 @@ export function ContactForm() {
     if (!formData.name.trim()) {
       newErrors.name = 'Please add Name to send the Message';
     }
+    
     if (!formData.mobile.trim()) {
       newErrors.mobile = 'Please add Mobile No to send the Message';
+    } else if (!/^[6-9]\d{9}$/.test(formData.mobile.trim())) {
+      newErrors.mobile = 'Please enter a valid Mobile Number';
     }
+    
     if (!formData.message.trim()) {
       newErrors.message = 'Please add Message to send the Message';
+    }
+
+    if (!formData.contactPerson?.trim()) {
+      newErrors.contactPerson = 'Please specify who to contact';
     }
 
     setErrors(newErrors);
@@ -45,32 +58,33 @@ export function ContactForm() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     
-    if (!validateForm()) {
+    if (!validateForm() || isSubmitting) {
       return;
     }
 
-    // Email functionality
-    const mailtoLink = `mailto:umangthakkar005@gmail.com?subject=Contact from ${formData.name}&body=${encodeURIComponent(
-      `Name: ${formData.name}\nMobile: ${formData.mobile}\nEmail: ${formData.email}\n\nMessage: ${formData.message}`
-    )}`;
+    setIsSubmitting(true);
 
-    // WhatsApp functionality
-    const whatsappMessage = encodeURIComponent(
-      `Name: ${formData.name}\nMobile: ${formData.mobile}\nEmail: ${formData.email}\n\nMessage: ${formData.message}`
-    );
-    const whatsappLink = `https://wa.me/919426154668?text=${whatsappMessage}`;
+    try {
+      // Send via both channels
+      sendMessage.email(formData);
+      sendMessage.whatsapp(formData);
 
-    // Open both links
-    window.open(mailtoLink, '_blank');
-    window.open(whatsappLink, '_blank');
+      // Reset form
+      setFormData({
+        name: '',
+        mobile: '',
+        email: '',
+        message: '',
+        contactPerson: ''
+      });
 
-    // Reset form
-    setFormData({
-      name: '',
-      mobile: '',
-      email: '',
-      message: ''
-    });
+      alert('Message channels opened successfully!');
+    } catch (error) {
+      console.error('Error opening message channels:', error);
+      alert('Failed to open message channels. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -99,6 +113,7 @@ export function ContactForm() {
           value={formData.mobile}
           onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
           className="w-full px-4 py-2 rounded-lg bg-gray-900 border border-gray-700 focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400"
+          placeholder="Enter 10-digit mobile number"
         />
         {errors.mobile && <p className="mt-1 text-red-400 text-sm">{errors.mobile}</p>}
       </div>
@@ -117,6 +132,21 @@ export function ContactForm() {
       </div>
 
       <div>
+        <label htmlFor="contactPerson" className="block text-sm font-medium mb-2">
+          Contact Person *
+        </label>
+        <input
+          type="text"
+          id="contactPerson"
+          value={formData.contactPerson}
+          onChange={(e) => setFormData({ ...formData, contactPerson: e.target.value })}
+          className="w-full px-4 py-2 rounded-lg bg-gray-900 border border-gray-700 focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400"
+          placeholder="Who should we contact?"
+        />
+        {errors.contactPerson && <p className="mt-1 text-red-400 text-sm">{errors.contactPerson}</p>}
+      </div>
+
+      <div>
         <label htmlFor="message" className="block text-sm font-medium mb-2">
           Message *
         </label>
@@ -130,9 +160,9 @@ export function ContactForm() {
         {errors.message && <p className="mt-1 text-red-400 text-sm">{errors.message}</p>}
       </div>
 
-      <Button type="submit" fullWidth>
+      <Button type="submit" fullWidth disabled={isSubmitting}>
         <Send className="w-4 h-4 mr-2" />
-        Send Message
+        {isSubmitting ? 'Opening message channels...' : 'Send Message'}
       </Button>
 
       <p className="text-center text-sm text-gray-400 mt-4">
