@@ -1,4 +1,4 @@
-import { Mail, Phone } from 'lucide-react';
+import { MessageCircle, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface ShareButtonProps {
@@ -41,7 +41,7 @@ export function ShareButtons() {
       <p className="text-gray-400">Share Biodata Via:</p>
       <div className="flex justify-center space-x-6">
         <ShareButton
-          icon={<Phone size={24} />}
+          icon={<MessageCircle size={24} />}
           label="Share via WhatsApp"
           onClick={handleWhatsApp}
         />
