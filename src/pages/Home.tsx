@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/Button';
 import { personalInfo, professionalInfo } from '../data/profile';
@@ -44,7 +43,6 @@ export default function Home() {
         <Link to="/about">
           <Button>
             More Details About Me
-            <ArrowRight className="inline ml-2" size={20} />
           </Button>
         </Link>
       </div>
