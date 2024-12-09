@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
 import { Button } from '../components/Button';
 import { PhotoGallery } from '../components/PhotoGallery';
 
@@ -35,7 +34,6 @@ export default function Gallery() {
         <Link to="/testimonials">
           <Button>
             What Others Say About Me?
-            <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
         </Link>
       </div>
