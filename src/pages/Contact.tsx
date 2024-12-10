@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin, User } from 'lucide-react';
 import { ContactForm } from '../components/ContactForm';
 
 export default function Contact() {
@@ -17,6 +17,14 @@ export default function Contact() {
         >
           <h2 className="text-2xl font-serif mb-6">Contact Information</h2>
           
+          <div className="flex items-center space-x-4">
+            <User className="text-yellow-400" />
+            <div>
+              <p className="font-semibold">Contact Person</p>
+              <p className="text-gray-400">Umang Sharma</p>
+            </div>
+          </div>
+
           <div className="flex items-center space-x-4">
             <Phone className="text-yellow-400" />
             <div>
