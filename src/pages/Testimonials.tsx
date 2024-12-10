@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
 import { Button } from '../components/Button';
 import { TestimonialCard } from '../components/TestimonialCard';
 
@@ -43,10 +42,7 @@ export default function Testimonials() {
 
       <div className="flex justify-center mt-12">
         <Link to="/contact">
-          <Button>
-            Get in Touch
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Button>
+          <Button>Get In Touch</Button>
         </Link>
       </div>
     </div>
