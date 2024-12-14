@@ -45,5 +45,5 @@ export interface LifestyleInfo {
   diet: string;
   drinking: string;
   smoking: string;
-  hobbies: string[];
+  hobbies: string;
 }
