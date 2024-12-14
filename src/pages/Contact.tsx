@@ -20,16 +20,24 @@ export default function Contact() {
           <div className="flex items-center space-x-4">
             <User className="text-yellow-400" />
             <div>
-              <p className="font-semibold">Contact Person</p>
-              <p className="text-gray-400">Umang Sharma</p>
+              <p className="font-semibold">Name of Contact Person</p>
+              <p className="text-gray-400">Dilipkumar Thakkar</p>
             </div>
           </div>
-
+          
+          <div className="flex items-center space-x-4">
+            <User className="text-yellow-400" />
+            <div>
+              <p className="font-semibold">Relation to the Prospect</p>
+              <p className="text-gray-400">Father</p>
+            </div>
+          </div>
+          
           <div className="flex items-center space-x-4">
             <Phone className="text-yellow-400" />
             <div>
               <p className="font-semibold">Phone</p>
-              <p className="text-gray-400">+91 94261 54668</p>
+              <p className="text-gray-400">+91 9825754668</p>
             </div>
           </div>
 
@@ -44,8 +52,8 @@ export default function Contact() {
           <div className="flex items-center space-x-4">
             <MapPin className="text-yellow-400" />
             <div>
-              <p className="font-semibold">Location</p>
-              <p className="text-gray-400">Bangalore, India</p>
+              <p className="font-semibold">Address</p>
+              <p className="text-gray-400">6-A, Chinar Gulnar, Anand Vidhyanagar Road, Anand, Gujarat</p>
             </div>
           </div>
         </motion.div>
