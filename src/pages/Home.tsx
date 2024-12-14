@@ -31,12 +31,13 @@ export default function Home() {
         animate={{ y: 0 }}
         className="text-5xl font-serif mb-4"
       >
-        {personalInfo.fullName}'s <span className="text-yellow-400">Biodata</span>
+        Umang's <span className="text-yellow-400">Biodata</span>
       </motion.h1>
       
       <p className="text-gray-300 mb-8 max-w-md">
-        A {personalInfo.age}-year-old {professionalInfo.occupation} based in {professionalInfo.workLocation}, 
-        seeking a life partner to share beautiful moments together.
+        A {personalInfo.age}-year-old professional from {professionalInfo.workLocation}, 
+        dedicated to building a life filled with love, shared values, and meaningful connections. 
+        Seeking a life partner to embark on a journey of togetherness, creating cherished memories every step of the way.
       </p>
 
       <div className="space-y-4">
