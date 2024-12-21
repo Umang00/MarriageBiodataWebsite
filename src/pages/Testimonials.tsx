@@ -4,9 +4,9 @@ import { TestimonialCard } from '../components/TestimonialCard';
 
 const testimonials = [
   {
-    name: 'Rajesh Kumar',
-    relation: 'Family Friend',
-    text: 'Umang is a very responsible and caring person. His dedication to both his career and family values makes him an ideal life partner. I\'ve known him and his family for over 15 years.',
+    name: 'Krishnakumar Davda',
+    relation: 'Beloved Nana',
+    text: 'Umang has always been like a son to me. Even as a child, his maturity amazed me—he never cried for toys like other kids during our temple visits, always saying \'no\' with a wisdom beyond his years. Watching him grow into the kind-hearted, responsible person he is today was one of my life’s greatest joys.',
     imageUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop'
   },
   {
@@ -16,9 +16,15 @@ const testimonials = [
     imageUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop'
   },
   {
-    name: 'Dr. Sharma',
-    relation: 'Professor',
-    text: 'As his professor during his Master\'s program, I witnessed Umang\'s exceptional growth. His analytical thinking and problem-solving abilities set him apart from his peers.',
+    name: 'Ashok Swami',
+    relation: 'College Friend',
+    text: 'Umang has been my rock during one of the toughest phases of my life. When I was buried under a mountain of debt and struggling to make ends meet, he helped me restructure my loan, supported me financially, and encouraged me to upskill. Today, thanks to his guidance and support, I\'ve tripled my earnings and nearly cleared my debts. He\'s the kind of friend everyone wishes to have—selfless, wise, and always ready to lend a hand.',
+    imageUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop'
+  },
+  {
+    name: 'Shiv Pande',
+    relation: 'Ex-Manager at Hunch',
+    text: 'Umang\'s creativity and strategic thinking set him apart as a content strategist. His ability to lead with authenticity inspired the team and fostered a collaborative environment. Whether solving complex challenges or pushing boundaries with innovative ideas, he always delivered with excellence. It was a privilege to witness his growth and see him take on every project with unmatched dedication.',
     imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop'
   }
 ];
